@@ -1,0 +1,8 @@
+<h1> All Fish Avaiable For Purchase</h1>
+
+<% @fishes.each do |fish| %>
+  <h3><%= fish.name %></h3>
+  <h3><%= fish.price %></h3>
+  <img src="<%= fish.image %>">
+  <h3><%= fish.description %></h3>
+<% end %>
