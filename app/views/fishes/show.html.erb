@@ -1,0 +1,11 @@
+<h1><%= @fish.name %></h1>
+<h3><%= @fish.price %></h3>
+<img src= "<%= @fish.image %>">
+<h3><%= @fish.description %></h3>
+
+  <%= link_to "Home", "/" %>
+  <%= link_to "Edit", "/fishes/#{@fish.id}/edit" %>
+  <%= link_to "Delete", "/fishes.#{@fish.id}",
+  method: :delete, data: {confirm: "Are you sure?"} %>
+
+ 

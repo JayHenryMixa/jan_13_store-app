@@ -1,0 +1,29 @@
+<h1> Update Products </h1>
+
+<%= form_tag "/fishes/#{@fish.id}", method: :patch do %>
+
+<h3> 
+  <div>
+    <%= label_tag :name %> 
+    <%= text_field_tag :name, @fish.name %>
+    </div>
+
+  <div>
+    <%= label_tag :price %>
+    <%= text_field_tag :price, @fish.price %>
+    </div>
+
+  <div>
+    <%= label_tag :image %>
+    <%= text_field_tag :image, @fish.image %>
+    </div>
+
+  <div>
+  <%= label_tag :description %>
+  <%= text_field_tag :description, @fish.description %>
+  </div>
+
+  <%= submit_tag 'Update products available' %>
+
+    </h3>
+    <% end %>
