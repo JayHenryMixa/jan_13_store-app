@@ -6,7 +6,7 @@ class FishesController < ApplicationController
   end
 
   def show
-    @fish = Fish.find_by(id: params[:id])
+    @fish = Fish.find(params[:id])
   end
 #def new stays empty
   def new
