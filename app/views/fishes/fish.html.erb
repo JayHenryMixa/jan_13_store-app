@@ -1,7 +1,7 @@
-<h1> Wrasses Available for Purchase </h1>
+<h1> Fish Available for Purchase </h1>
 
 <h3><%= @fish.name %></h3>
-<h3><%= @fish.price %></h3>
+<h3><%= number_to_currency(@fish.price) %></h3>
 <h3><%= @fish.image %></h3>
 <h3><%= @fish.description %></h3>
 

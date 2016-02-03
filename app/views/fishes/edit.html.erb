@@ -12,18 +12,19 @@
     <%= label_tag :price %>
     <%= text_field_tag :price, @fish.price %>
     </div>
-
-  <div>
-    <%= label_tag :image %>
-    <%= text_field_tag :image, @fish.image %>
+  
+    <div>
+      <%= label_tag :image %>
+      <%= text_field_tag :image %>
     </div>
 
-  <div>
-  <%= label_tag :description %>
-  <%= text_field_tag :description, @fish.description %>
-  </div>
+
+    <div>
+      <%= label_tag :description %>
+      <%= text_field_tag :description, @fish.description %>
+    </div>
 
   <%= submit_tag 'Update products available' %>
 
-    </h3>
-    <% end %>
+  </h3>
+<% end %>

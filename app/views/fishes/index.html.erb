@@ -1,15 +1,18 @@
-<h1> All Fish Avaiable For Purchase</h1>
-
+<h1>Fish Avaiable For Purchase</h1>
+  
+  <h3>
 <div class="row">
   <% @fishes.each do |fish| %>
-    <div class="col-md-2 list-view">
+    <div class="col-md-6 list-view">
     <div class="thumbnail">
+      <%= image_tag fish.get_first_image, width: 300, class: "image-responsive" %>
       <h3><a href="/fishes/<%= fish.id %>"><%= fish.name %></a></h3>
-      <h3><%= fish.price %></h3>
+      <h3><%= number_to_currency(fish.price) %></h3>
       
       <h3><%= fish.description %></h3>
-      <%= image_tag fish.image, width: 300, class: "image-responsive" %>
+
+
     </div>
   </div>
   <% end %>
-</div>
+</div></h3>

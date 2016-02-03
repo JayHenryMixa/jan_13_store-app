@@ -1,0 +1,10 @@
+
+<h1>Your Cart</h1>
+
+<% @carted_fishes.each do |carted_fish| %>
+  <h2><%= carted_fish.fish.name %> - Qty: <%= carted_fish.quantity %> <%= link_to "Remove Item", "/carted_fishes/#{carted_fish.id}", method: :delete %></h2>
+  <% end %>
+
+  <%= form_tag "/orders", method: :post do %>
+    <%= submit_tag "Buy Now", class: "btn btn-default" %>
+  <% end %>

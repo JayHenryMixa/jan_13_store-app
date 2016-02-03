@@ -1,11 +1,46 @@
 <h1><a href="/"><%= @fish.name %></a></h1>
-<h3><%= @fish.price %></h3>
-<img src= "<%= @fish.image %>">
-<h3><%= @fish.description %></h3>
+<% @fish.images.each do |image| %>
+  <img src="<%= image.url %>" class="img-responsive"/>
+<% end %>
+  
+<h3><%= @fish.name %></h3>
+<h3> Category is: <% @fish.categories.each do |category| %></h3>
+<h3><%= category.name %></h3>
+<% end %>
 
+<h3><%= @fish.sale_message %></h3>
+
+<h3> Price: <%= number_to_currency(@fish.price) %></h3>
+<h3> Supplier: <%= @fish.supplier.name %></h3>
+<h3> Description: <%= @fish.description %></h3>
+<h3>Tax: $ <%= number_to_currency(@fish.tax) %></h3> 
+<h3>Total: $ <%= number_to_currency(@fish.total) %></h3>
+<hr>
+ <%= form_tag "/carted_fishes", method: :post do %>
+  <div class="form-group">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity %> 
+  </div>  
+       
+  <div class="form-group">  
+    <%= hidden_field_tag :fish_id, @fish.id %> 
+  </div>  
+  
+  <%= submit_tag "Add to Cart", class: "btn btn-success" %>
+  
+  
+    </div>
+
+    <% end %>
+
+
+
+
+<hr>
+<div>
   <%= link_to "Home", "/" %>
   <%= link_to "Edit", "/fishes/#{@fish.id}/edit" %>
-  <%= link_to "Delete", "/fishes.#{@fish.id}",
+  <%= link_to "Delete", "/fishes/#{@fish.id}",
   method: :delete, data: {confirm: "Are you sure?"} %>
-
+</div>
  
