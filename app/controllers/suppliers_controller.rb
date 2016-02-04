@@ -1,5 +1,8 @@
 class SuppliersController < ApplicationController
 
+  before_action :authenticate_admin!, except: [:index]
+
+
   def index
     @suppliers = Suppliers.all 
   end

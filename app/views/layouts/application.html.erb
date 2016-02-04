@@ -26,8 +26,10 @@
         <li class="active"><a href="/fishes?sort=price&sort_order=asc">Lowest to Highest<span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="/fishes?sort=price&sort_order=desc">Highest to Lowest<span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="/fishes?discount=150">Discount Items<span class="sr-only">(current)</span></a></li>
+
+        <% if user_signed_in? && current_user.admin %>
         <li><a href="/fishes/new">Add New Fish</a></li>
-      
+        <% end %>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -58,7 +60,7 @@
 
     <% if current_user %>
             <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
-           <li> <span class="glyphicon glyphicon-shopping-cart" /><%= link_to "Cart", "/carted_fishes" %></li>
+           <li> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart(#{@cart_count})", "/carted_fishes" %></li>
 
             <% else %>
             <li><%= link_to "Sign Up", "/users/sign_up" %></li>
@@ -83,7 +85,7 @@
 <div class="container">
 <% flash.each do |name, message| %> 
   <p><%= message %></p>
-  <div class="alert alert-warning alert-dismissible" role="alert">
+  <div class="alert alert-<%= name == "alert" || "notice" ? "warning" : name %> warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <%= message %>
 </div>

@@ -1,5 +1,8 @@
 class Fish < ActiveRecord::Base
 
+  validates :name, presence: true
+  
+
   belongs_to :supplier
   has_many :images
  

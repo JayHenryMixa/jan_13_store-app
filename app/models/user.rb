@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :carted_products
+  has_many :carted_fishes
   has_many :orders  
        
   # Include default devise modules. Others available are:

@@ -6,16 +6,18 @@ class Order < ActiveRecord::Base
   has_many :carted_fishes
   has_many :fishes, through: :carted_fishes 
 
-  def calc_subtotal(price)
-    price * quantity
-  end
+  def calculate_totals
+    
+    subtotal = 0
 
-  def calc_tax(tax_rate)
-    subtotal * tax_rate
-  end
+    carted_fishes.each do |carted_fish|
+      subtotal = carted_fish.subtotal 
+    end
 
-  def calc_total
-    subtotal + tax
+    tax = subtotal * 0.09
+    total = subtotal = tax 
+
+    update(subtotal: subtotal, tax: tax, total: total)
   end
 
 end

@@ -25,14 +25,14 @@ Rails.application.routes.draw do
   get '/suppliers/:id' => 'suppliers#show'
   get '/suppliers/:id/edit' => 'suppliers#edit'
   patch '/suppliers/:id' => 'suppliers#update'
-  delete 'suppliers/:id' => 'suppliers#destory'
+  delete 'suppliers/:id' => 'suppliers#destroy'
 
-  # post '/orders' => 'orders#create'
-   #get '/orders/:id' => 'orders#show'
+   post '/orders' => 'orders#create'
+   get '/orders/:id' => 'orders#show'
 
-  get 'carted_fishes/:id' => 'carted_fishes#index'
+  get 'carted_fishes' => 'carted_fishes#index'
   post '/carted_fishes' => 'carted_fishes#create'
-
+  delete '/carted_fishes/:id' => 'fishes#destroy'
 
 
 

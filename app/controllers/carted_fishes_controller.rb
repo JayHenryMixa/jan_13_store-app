@@ -1,5 +1,7 @@
 class CartedFishesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     if user_signed_in? && CartedFish.where(status: "carted", user_id: current_user.id).any?
       @carted_fishes = CartedFish.where(status: "carted", user_id: current_user.id)
@@ -18,4 +20,17 @@ class CartedFishesController < ApplicationController
     flash[:success] = "Your cart has been updated."
     redirect_to "/carted_fishes"
   end
+
+  def destroy
+    @carted_fish = CartedFish.find(params[:id])
+    carted_fish.update(status: "Remove")
+
+    redirect_to "/carted_fishes"
+  end
+
+
 end
+
+
+
+

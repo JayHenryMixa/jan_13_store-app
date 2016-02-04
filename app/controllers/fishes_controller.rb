@@ -1,6 +1,8 @@
 class FishesController < ApplicationController
 
 
+  before_action :authenticate_admin!, except: [:index, :show, :search, :random]
+
   def index
     @fishes = Fish.all
     
@@ -24,22 +26,23 @@ class FishesController < ApplicationController
   end
 #def new stays empty
   def new
+    @fish.Fish.new
   end
 
   def create
-    @fish = Fish.create({
-      name: params[:name], 
-      price: params[:price], 
-      description: params[:description],
-      supplier_id: params[:supplier][:supplier_id]
-      })
 
+      @fish = Fish.create({name: params[:name], price: params[:price], 
+      description: params[:description], supplier_id: params[:supplier][:supplier_id]})
+
+    if @fish.save
     Image.create(url: params[:image], fish_id: @fish.id) if params[:image] != ""
 
 
     flash[:success] = "New Item Added"
-
     redirect_to "/"
+  else
+    render :new
+  end
   end
 
   def edit
